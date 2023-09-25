@@ -53,6 +53,21 @@ def game_core_v3(number: int = 1) -> int:
     Returns:
         int: _description_
     """
+    pr_min=1
+    pr_max=101
+    count = 0
+    predict = np.random.randint(1, 101)#компьютер предсказывает число
+    
+    while number != predict:# пока загаданное число не равно предсказанному
+        count += 1
+        if number > predict:# если предсказанное число меньше загаданного
+            pr_min = predict
+            predict = round((pr_min + pr_min)/2) 
+        elif number < predict:# если число меньше загаданного
+            pr_max = predict
+            predict = round((pr_min + pr_max)/2)
+    return count   
+
 
 def score_game(random_predict) -> int:
     """За какое количство попыток в среднем за 1000 подходов угадывает наш алгоритм
