@@ -55,7 +55,7 @@ def game_core_v3(number: int = 1) -> int:
     """
     pr_min=1
     pr_max=101
-    count = 0
+    count = 1
     predict = np.random.randint(1, 101)#компьютер предсказывает число
     
     while number != predict:# пока загаданное число не равно предсказанному
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # RUN
     print('Run benchmarking for random_predict: ', end='')
     score_game(random_predict)
-        
+
     print('Run benchmarking for game_core_v2: ', end='')
     score_game(game_core_v2)
     
