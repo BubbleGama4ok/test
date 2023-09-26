@@ -66,6 +66,7 @@ def game_core_v3(number: int = 1) -> int:
         elif number < predict:# если число меньше загаданного
             pr_max = predict
             predict = round((pr_min + pr_max)/2)
+    print(f'число угадано ! Это число {number}, за {count} попыток.')
     return count   
 
 
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     # RUN
     print('Run benchmarking for random_predict: ', end='')
     score_game(random_predict)
-    
+        
     print('Run benchmarking for game_core_v2: ', end='')
     score_game(game_core_v2)
     
