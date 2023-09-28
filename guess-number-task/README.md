@@ -11,7 +11,7 @@
 ### Описание проекта    
 Угадать загаданное компьютером число за минимальное число попыток.
 
-:arrow_up:[к оглавлению](_)
+:arrow_up:[к оглавлению](https://github.com/BubbleGama4ok/test/tree/main/guess-number-task#readme)
 
 
 ### Какой кейс решаем?    
