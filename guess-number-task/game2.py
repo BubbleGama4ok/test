@@ -18,10 +18,14 @@ def game_core_v3(number: int = 1) -> int:
     predict = np.random.randint(1, 101)#компьютер предсказывает число
     
     while number != predict: # пока загаданное число не равно предсказанному
+        if (pr_max - pr_min) < 2:
+            break
         count += 1
+        
         if predict > number:# если предсказанное число больше загаданного
             pr_max = predict
             predict = round((pr_min + pr_min)/2) 
+        
         elif predict < number:# если число меньше загаданного
             pr_min = predict
             predict = round((pr_min + pr_max)/2)
@@ -32,23 +36,26 @@ print(f'Количество попыток: {game_core_v3()}')
 
 
 
-def random_predict(number:int=1) -> int:
-    """Рандомно угадываем число
+def score_game(game_core_v3) -> int:
+    """За какое количство попыток в среднем за 1000 подходов угадывает наш алгоритм
 
     Args:
-        number (int, optional): Загаданное число. Defaults to 1.
+        random_predict ([type]): функция угадывания
 
     Returns:
-        int: Число попыток
+        int: среднее количество попыток
     """
+    count_ls = []
+    np.random.seed(1)  # фиксируем сид для воспроизводимости
+    random_array = np.random.randint(1, 101, size=(1000))  # загадали список чисел
 
-    count = 0
+    for number in random_array:
+        count_ls.append(game_core_v3(number))
 
-    while True:
-        count += 1
-        predict_number = np.random.randint(1, 101) # предполагаемое число
-        if number == predict_number:
-            break # выход из цикла, если угадали
-    return(count)
+    score = int(np.mean(count_ls))
+    print(f"Ваш алгоритм угадывает число в среднем за:{score} попыток")
+    return score
 
-#print(f'Количество попыток: {random_predict()}')
+print('Run benchmarking for game_core_v3: ', end='')
+score_game(game_core_v3)
+    
